@@ -15,7 +15,7 @@ public class EShopeApplication {
 
     @GetMapping("/Cyrine")
     public  String hello(){
-        return "Cyrine Kaatttttousss";
+        return "meow meow ";
     }
 
 }
