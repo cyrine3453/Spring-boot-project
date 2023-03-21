@@ -1,4 +1,4 @@
-package com.example.eshope.tn.iset.entities;
+package tn.iset.entities;
 
 import java.io.Serializable;
 
@@ -13,4 +13,6 @@ public class User implements Serializable{
     public String login;
     public String password;
     public int connectionNumber;
+
+    
 }
