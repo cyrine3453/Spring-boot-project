@@ -18,5 +18,7 @@ public class Payment implements Serializable{
     private int idPayment;
     private float amount;
     private LocalDateTime paymentDate;
-    
+
+    @OneToOne
+    private Command command;
 }

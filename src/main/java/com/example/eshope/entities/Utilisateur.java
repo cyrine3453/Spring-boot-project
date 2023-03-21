@@ -1,11 +1,9 @@
 package com.example.eshope.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +17,11 @@ public class Utilisateur implements Serializable{
     private String password;
     private int connectionNumber;
 
+    @OneToOne
+    private UserInformations userInformations;
+    @OneToMany (mappedBy = "utilisateur" , fetch = FetchType.LAZY)
+    private Collection<Command> commandes;
+
+    @ManyToMany (fetch = FetchType.EAGER)
+    private Collection<Role> roles;
 }

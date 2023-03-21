@@ -20,5 +20,8 @@ public class CommandLine implements Serializable{
 
     @ManyToOne
     private Article article;
+    @ManyToOne
+    private Command command;
+
 } 
 
