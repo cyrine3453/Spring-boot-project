@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class UserInformations implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idInformations;
-    public String address;
-    public String city;
-    public String email;
-    public String phoneNumber;
+    private int idInformations;
+    private String address;
+    private String city;
+    private String email;
+    private int phoneNumber;
 }

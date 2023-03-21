@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 public class CommandLine implements Serializable{
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idCommandLine;
-    public int quantity;
+    private int idCommandLine;
+    private int quantity;
 
     @ManyToOne
-    public Article article;
+    private Article article;
 } 
 

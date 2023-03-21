@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class Utilisateur implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idUser;
-    public String login;
-    public String password;
-    public int connectionNumber;
+    private int idUser;
+    private String login;
+    private String password;
+    private int connectionNumber;
 
 }

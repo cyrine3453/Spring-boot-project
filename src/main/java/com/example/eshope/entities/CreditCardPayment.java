@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class CreditCardPayment implements Serializable {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public String cardNumber;
-    public String experationDate;
+    private String cardNumber;
+    private String experationDate;
 }
