@@ -1,6 +1,8 @@
 package com.example.eshope.entities;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,5 +17,7 @@ public class CreditCardPayment implements Serializable {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String cardNumber;
-    private String experationDate;
+    private LocalTime experationDate;
+    public void setExperationDate(LocalDateTime now) {
+    }
 }
