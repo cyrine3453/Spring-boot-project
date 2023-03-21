@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 public class Role implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idRole;
-    public String RoleName;
+    private int idRole;
+    private String RoleName;
 }

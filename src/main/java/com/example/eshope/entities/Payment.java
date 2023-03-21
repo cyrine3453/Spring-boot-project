@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class Payment implements Serializable{
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idPayment;
-    public float amount;
-    public LocalDateTime paymentDate;
+    private int idPayment;
+    private float amount;
+    private LocalDateTime paymentDate;
     
 }

@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class PaypalPayment implements Serializable{
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public String accountNumber;
+    private String accountNumber;
 }

@@ -11,18 +11,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor 
-public class User implements Serializable{
-
-    private static final long serialVersionUID = 1L;
+public class Utilisateur implements Serializable{
     @Id
-    @GeneratedValue
-    public int idUser;
-    public String login;
-    public String password;
-    public int connectionNumber;
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idUser;
+    private String login;
+    private String password;
+    private int connectionNumber;
 
 }

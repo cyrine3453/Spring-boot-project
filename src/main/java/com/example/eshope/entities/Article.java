@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 public class Article implements Serializable{
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int idArticle;
-    public String description;
-    public String brand;
-    public float price;
+    private int idArticle;
+    private String description;
+    private String brand;
+    private float price;
 
     
 }
