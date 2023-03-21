@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 
 @DiscriminatorValue("CreditCard")
 public class CreditCardPayment extends Payment implements Serializable {
-    @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String cardNumber;
     private LocalTime experationDate;
     public void setExperationDate(LocalDateTime now) {
