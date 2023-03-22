@@ -20,6 +20,8 @@ import com.example.eshope.entities.UserInformations;
 import com.example.eshope.entities.Utilisateur;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -100,5 +102,22 @@ public class EShopeApplication {
         creditCardPayment.setCardNumber("123456789");
         creditCardPayment.setExperationDate(LocalDateTime.now());
         creditCardPaymentRepository.save(creditCardPayment);
+
+
+
+        //Add user to command
+        command.setUtilisateur(utilisateur);
+        commandRepository.save(command);
+        //Add command to commandLine
+        commandLine.setCommand(command);
+        commandLineRepository.save(commandLine);
+        //Add userInformations to user
+        utilisateur.setUserInformations(userInformations);
+        userRepository.save(utilisateur);
+        //Add article to commandLine
+        commandLine.setArticle(article);
+        commandLineRepository.save(commandLine);
+
+
     }
 }

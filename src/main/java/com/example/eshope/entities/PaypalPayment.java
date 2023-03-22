@@ -14,4 +14,5 @@ import lombok.NoArgsConstructor;
 @DiscriminatorValue("Paypal")
 public class PaypalPayment extends Payment {
     private String accountNumber;
+
 }
