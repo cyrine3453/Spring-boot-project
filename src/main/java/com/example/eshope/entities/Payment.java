@@ -21,4 +21,11 @@ public class Payment implements Serializable{
 
     @OneToOne
     private Command command;
+
+    public void setPaypalPayment(PaypalPayment paypalPayment) {
+        
+    }
+
+    public void setCreditCardPayment(CreditCardPayment creditCardPayment) {
+    }
 }

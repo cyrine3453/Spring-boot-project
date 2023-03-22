@@ -1,6 +1,7 @@
 package com.example.eshope.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import jakarta.persistence.*;
@@ -15,6 +16,17 @@ public class Role implements Serializable{
     private int idRole;
     private String RoleName;
 
-    @ManyToMany(mappedBy = "roles")
-    private Collection<Utilisateur> utilisateurs;
+    @ManyToMany (mappedBy = "roles" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    private Collection<Utilisateur> utilisateurs ;
+
+    public Collection<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
+    }
+    public void setUtilisateurs(Collection<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateurs.add(utilisateur);
+    }
 }

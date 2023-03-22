@@ -1,7 +1,9 @@
 package com.example.eshope.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,9 +21,24 @@ public class Utilisateur implements Serializable{
 
     @OneToOne
     private UserInformations userInformations;
-    @OneToMany (mappedBy = "utilisateur" , fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "utilisateur" , fetch = FetchType.EAGER)
     private Collection<Command> commandes;
 
-    @ManyToMany (fetch = FetchType.EAGER)
-    private Collection<Role> roles;
+    @ManyToMany
+    @JoinTable(name = "USER_ROLES",
+    joinColumns = @JoinColumn(name = "USER_ID"),
+    inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+    private List<Role> roles = new ArrayList<>();
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+
+    public void setRole(Role role) {
+        this.roles.add(role);
+    }
 }

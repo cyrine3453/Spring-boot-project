@@ -20,6 +20,8 @@ import com.example.eshope.entities.UserInformations;
 import com.example.eshope.entities.Utilisateur;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -30,6 +32,15 @@ public class EShopeApplication {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext test = SpringApplication.run(EShopeApplication.class, args);
+
+        //Role
+        RoleRepository roleRepository = test.getBean(RoleRepository.class);
+        Role role = new Role();
+        role.setRoleName("mewoww");
+        Role role2 = new Role();
+        role2.setRoleName("mewoww2");
+        roleRepository.save(role);
+        roleRepository.save(role2);
         //User
         UtilisateurRepository userRepository = test.getBean(UtilisateurRepository.class);
         Utilisateur utilisateur = new Utilisateur();
@@ -37,6 +48,11 @@ public class EShopeApplication {
         utilisateur.setPassword("test");
         utilisateur.setConnectionNumber(0);
         userRepository.save(utilisateur);
+        //Add role reference to user
+        utilisateur.setRole(role);
+        utilisateur.setRole(role2);
+        userRepository.save(utilisateur);
+
         //Command
         CommandRepository commandRepository = test.getBean(CommandRepository.class);
         Command command = new Command();
@@ -72,12 +88,7 @@ public class EShopeApplication {
         payment.setAmount(0);
         payment.setPaymentDate(LocalDateTime.now());
         paymentRepository.save(payment);
-        //Role
-        RoleRepository roleRepository = test.getBean(RoleRepository.class);
-        Role role = new Role();
-        role.setIdRole(0);
-        role.setRoleName("test");
-        roleRepository.save(role);        
+
         //PaypalPayment
         PaypalPaymentRepository paypalPaymentRepository = test.getBean(PaypalPaymentRepository.class);
         PaypalPayment paypalPayment = new PaypalPayment();
@@ -89,5 +100,22 @@ public class EShopeApplication {
         creditCardPayment.setCardNumber("test");
         creditCardPayment.setExperationDate(LocalDateTime.now());
         creditCardPaymentRepository.save(creditCardPayment);
+
+
+
+        //Add user to command
+        command.setUtilisateur(utilisateur);
+        commandRepository.save(command);
+        //Add command to commandLine
+        commandLine.setCommand(command);
+        commandLineRepository.save(commandLine);
+        //Add userInformations to user
+        utilisateur.setUserInformations(userInformations);
+        userRepository.save(utilisateur);
+        //Add article to commandLine
+        commandLine.setArticle(article);
+        commandLineRepository.save(commandLine);
+
+
     }
 }
