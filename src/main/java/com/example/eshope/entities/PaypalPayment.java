@@ -1,6 +1,5 @@
 package com.example.eshope.entities;
 
-import java.io.Serializable;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,13 +8,11 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity@Data @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor@NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
+
 
 @DiscriminatorValue("Paypal")
-
-public class PaypalPayment extends Payment implements Serializable{
-
-
+public class PaypalPayment extends Payment {
     private String accountNumber;
 
 }

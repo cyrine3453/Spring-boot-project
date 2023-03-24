@@ -20,8 +20,7 @@ import com.example.eshope.entities.UserInformations;
 import com.example.eshope.entities.Utilisateur;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,24 +32,12 @@ public class EShopeApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext test = SpringApplication.run(EShopeApplication.class, args);
 
-        //Role
-        RoleRepository roleRepository = test.getBean(RoleRepository.class);
-        Role role = new Role();
-        role.setRoleName("mewoww");
-        Role role2 = new Role();
-        role2.setRoleName("mewoww2");
-        roleRepository.save(role);
-        roleRepository.save(role2);
         //User
         UtilisateurRepository userRepository = test.getBean(UtilisateurRepository.class);
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setLogin("test");
         utilisateur.setPassword("test");
         utilisateur.setConnectionNumber(0);
-        userRepository.save(utilisateur);
-        //Add role reference to user
-        utilisateur.setRole(role);
-        utilisateur.setRole(role2);
         userRepository.save(utilisateur);
 
         //Command
@@ -59,12 +46,14 @@ public class EShopeApplication {
         command.getIdCommand();
         command.setCommandDate(LocalDateTime.now());
         commandRepository.save(command);
+
         //CommandLine
         CommandLineRepository commandLineRepository = test.getBean(CommandLineRepository.class);
         CommandLine commandLine = new CommandLine();
         commandLine.setIdCommandLine(5);
         commandLine.setQuantity(5);
         commandLineRepository.save(commandLine);
+
         //UserInformations
         UserInformationsRepository userInformationsRepository = test.getBean(UserInformationsRepository.class);
         UserInformations userInformations = new UserInformations();
@@ -73,6 +62,7 @@ public class EShopeApplication {
         userInformations.setPhoneNumber(123456789);
         userInformations.setEmail("test");
         userInformationsRepository.save(userInformations);
+
         //Article
         ArticleRepository articleRepository = test.getBean(ArticleRepository.class);
         Article article = new Article();
@@ -81,23 +71,34 @@ public class EShopeApplication {
         article.setPrice(0);
         article.setBrand("test");
         articleRepository.save(article);
+
+        
+
+        //Role
+        RoleRepository roleRepository = test.getBean(RoleRepository.class);
+        Role role = new Role();
+        role.setIdRole(0);
+        role.setRoleName("test");
+        roleRepository.save(role);      
+
         //Payment
         PaymentRepository paymentRepository = test.getBean(PaymentRepository.class);
         Payment payment = new Payment();
-        payment.setIdPayment(0);
-        payment.setAmount(0);
+        payment.setIdPayment(5);
+        payment.setAmount(6);
         payment.setPaymentDate(LocalDateTime.now());
         paymentRepository.save(payment);
 
         //PaypalPayment
         PaypalPaymentRepository paypalPaymentRepository = test.getBean(PaypalPaymentRepository.class);
         PaypalPayment paypalPayment = new PaypalPayment();
-        paypalPayment.setAccountNumber("test");
+        paypalPayment.setAccountNumber("12345678");
         paypalPaymentRepository.save(paypalPayment);
+
         //CreditCardPayment
         CreditCardPaymentRepository creditCardPaymentRepository = test.getBean(CreditCardPaymentRepository.class);
         CreditCardPayment creditCardPayment = new CreditCardPayment();
-        creditCardPayment.setCardNumber("test");
+        creditCardPayment.setCardNumber("123456789");
         creditCardPayment.setExperationDate(LocalDateTime.now());
         creditCardPaymentRepository.save(creditCardPayment);
 

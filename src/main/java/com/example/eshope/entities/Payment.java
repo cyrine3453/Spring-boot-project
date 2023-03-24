@@ -10,17 +10,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity @Data@AllArgsConstructor@NoArgsConstructor
+
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "typePayment", discriminatorType = DiscriminatorType.STRING, length = 20)
+@DiscriminatorColumn(name = "typePayment", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("Payment")
 public class Payment implements Serializable{
+
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPayment;
     private float amount;
     private LocalDateTime paymentDate;
-
-    @JsonBackReference
+    
     @OneToOne
     private Command command;
 
