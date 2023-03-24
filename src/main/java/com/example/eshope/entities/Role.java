@@ -2,6 +2,9 @@ package com.example.eshope.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
