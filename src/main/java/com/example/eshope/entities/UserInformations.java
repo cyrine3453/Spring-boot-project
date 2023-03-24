@@ -2,12 +2,13 @@ package com.example.eshope.entities;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Entity@Data@AllArgsConstructor@NoArgsConstructor
+@Entity@Data @Getter @Setter
+@AllArgsConstructor@NoArgsConstructor
 public class UserInformations implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +18,7 @@ public class UserInformations implements Serializable{
     private String email;
     private int phoneNumber;
 
+    @JsonBackReference
     @OneToOne
     private Utilisateur utilisateur;
 }

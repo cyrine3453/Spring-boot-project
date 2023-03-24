@@ -14,6 +14,7 @@ public class Role implements Serializable{
     private int idRole;
     private String RoleName;
 
+    @JsonBackReference
     @ManyToMany (mappedBy = "roles" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private Collection<Utilisateur> utilisateurs ;
 
