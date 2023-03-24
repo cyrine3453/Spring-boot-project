@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,11 +21,17 @@ public class Utilisateur implements Serializable{
     private String password;
     private int connectionNumber;
 
+
+    @JsonManagedReference
     @OneToOne
     private UserInformations userInformations;
-    @OneToMany (mappedBy = "utilisateur" , fetch = FetchType.EAGER)
+
+
+    @JsonManagedReference
+    @OneToMany (mappedBy = "utilisateur" , fetch = FetchType.LAZY)
     private Collection<Command> commandes;
 
+    @JsonManagedReference
     @ManyToMany
     @JoinTable(name = "USER_ROLES",
     joinColumns = @JoinColumn(name = "USER_ID"),

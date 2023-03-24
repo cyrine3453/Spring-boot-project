@@ -2,6 +2,7 @@ package com.example.eshope.entities;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,8 @@ public class CommandLine implements Serializable{
 
     @ManyToOne
     private Article article;
+
+    @JsonBackReference
     @ManyToOne
     private Command command;
 

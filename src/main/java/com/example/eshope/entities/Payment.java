@@ -3,6 +3,7 @@ package com.example.eshope.entities;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class Payment implements Serializable{
     private float amount;
     private LocalDateTime paymentDate;
 
+    @JsonBackReference
     @OneToOne
     private Command command;
 
